@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ProjectService {
@@ -26,12 +27,21 @@ public class ProjectService {
     }
 
     public Project updateProject(Long id, Project project) {
-        if (projectRepository.existsById(id)) {
-            project.setId(id);
-            return projectRepository.save(project);
+    return projectRepository.findById(id)
+        .map(existingProject -> {
+            // Only update fields that are provided
+            if (project.getProjectName() != null) {
+                existingProject.setProjectName(project.getProjectName());
+            }
+            if (project.getDescription() != null) {
+                existingProject.setDescription(project.getDescription());
+            }
+            return projectRepository.save(existingProject);
+        })
+        .orElseThrow(() -> new NoSuchElementException("Project not found with id: " + id));
         }
-        return null;
-    }
+
+    
 
     public void deleteProject(Long id) {
         projectRepository.deleteById(id);
