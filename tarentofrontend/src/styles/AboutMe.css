@@ -1,0 +1,126 @@
+/* Reset some default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure full height and width for the html and body */
+html, body {
+    width: 100%;   /* Ensure full width */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.about-header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;  /* Full width */
+    position: relative; /* Make sure it's not cut off */
+    z-index: 1; /* Ensure it's above other content */
+}
+
+.about-header h1 {
+    margin: 0;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+/* Content Section */
+.about-content {
+    display: flex;
+    justify-content: space-between; /* Ensure space between text and image */
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* Ensure the content takes at least full viewport height */
+    padding: 0 20px;
+}
+
+.about-text {
+    flex: 1; /* Take up remaining space */
+    padding-right: 20px;
+}
+
+.about-text h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.about-text ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #555;
+}
+
+.about-text ul li {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Image Section */
+.about-image {
+    display: flex;
+    justify-content: flex-end;  /* Align image to the right */
+    align-items: center;        /* Vertically center the image */
+    width: 20%;                 /* Adjust the width to take up half the page */
+    height: auto;              /* Full viewport height */
+    overflow: hidden;
+    object-position: top;
+    object-fit: cover;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+/* Back Button */
+.back-button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #ddd;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .profile-img {
+        max-width: 200px;
+    }
+
+    .about-text ul li {
+        font-size: 16px;
+    }
+
+    .back-button {
+        margin-top: 20px;
+    }
+}

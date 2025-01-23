@@ -19,18 +19,24 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Container fluid>
+       <Container fluid>
       {/* Header section */}
       <Row className="header">
-        <Col md={4} className="text-left">
-          <p>{personalInfoList[0]?.email}</p>
-          <p>{personalInfoList[0]?.phoneNumber}</p>
-        </Col>
+        {/* Empty column for left space */}
+        <Col md={4}></Col> 
+
+        {/* Column for name centered */}
         <Col md={4} className="text-center">
           <h1>{personalInfoList[0]?.name}</h1>
         </Col>
-        <Col md={4}></Col>
+
+        {/* Column for email and phone aligned to the right */}
+        <Col md={4} className="text-right">
+          <p>{personalInfoList[0]?.email}</p>
+          <p>{personalInfoList[0]?.phoneNumber}</p>
+        </Col>
       </Row>
+
 
       {/* Image and description */}
       <Row>

@@ -1,34 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import "../styles/AboutMe.css";
 
-const AboutMePage = () => {
+const AboutMe = () => {
+  const [aboutMeData, setAboutMeData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/about-me/1") // Assuming ID is 1, update as needed
+      .then((response) => {
+        setAboutMeData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching About Me details:", error);
+      });
+  }, []);
+
+  const formatList = (data) => {
+    return data ? data.split(",").map((item, index) => <li key={index}>{item.trim()}</li>) : [];
+  };
+
   return (
-    <div className="about-me-container">
-      <h2>About Me</h2>
-      <p>I am a passionate developer with a strong background in web development, problem-solving, and learning new technologies.</p>
+    <Container fluid>
+      {/* Header */}
+      <Row className="about-header">
+        <Col>
+          <h1>ABOUT ME</h1>
+        </Col>
+      </Row>
 
-      <h3>Technical Skills</h3>
-      <ul>
-        <li>JavaScript, React, Node.js</li>
-        <li>HTML, CSS, Bootstrap</li>
-        <li>Java, Spring Boot, PostgreSQL</li>
-        <li>Version Control: Git</li>
-      </ul>
+      {/* Content Section */}
+      <Row className="about-content">
+        <Col md={6} className="about-text">
+          <h2>Tech Skills</h2>
+          <ul>{formatList(aboutMeData?.techSkills)}</ul>
+          
+          <h2>Soft Skills</h2>
+          <ul>{formatList(aboutMeData?.nonTechSkills)}</ul>
+          
+          <h2>Achievements</h2>
+          <ul>{formatList(aboutMeData?.achievements)}</ul>
+          
+          <h2>Interests</h2>
+          <ul>{formatList(aboutMeData?.interests)}</ul>
+        </Col>
 
-      <h3>Non-Technical Skills</h3>
-      <ul>
-        <li>Communication</li>
-        <li>Teamwork</li>
-        <li>Leadership</li>
-        <li>Time Management</li>
-      </ul>
+        {/* Image Section */}
+        <Col md={6} className="about-image">
+          <img src="/images/profile.jpg" alt="Profile" className="profile-img" />
+        </Col>
+      </Row>
 
-      <h3>Achievements</h3>
-      <p>Successfully completed multiple personal projects, contributed to open-source, and participated in coding competitions.</p>
-
-      <h3>Interests</h3>
-      <p>Tech innovations, problem-solving, gaming, and photography.</p>
-    </div>
+      {/* Back Button */}
+      <Row>
+        <Col className="text-center mt-4">
+          <Button href="/" className="back-button">Back</Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default AboutMePage;
+export default AboutMe;
