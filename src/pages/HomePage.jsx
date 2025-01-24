@@ -69,7 +69,7 @@ const HomePage = () => {
           </Button>
         </Col>
         <Col xs="auto">
-          <Button variant="success" href="/my-projects" className="button-pop">
+          <Button variant="success" href="/projects" className="button-pop">
             My Projects
           </Button>
         </Col>

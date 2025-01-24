@@ -81,17 +81,17 @@ html, body {
 
 /* Back Button */
 .back-button {
-    background-color: #f1f1f1;
+    background-color: #070000;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
-    color: black;
+    color: rgb(253, 251, 251);
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s;
     position: absolute;
-    top: 20px;
+    top: 18px;
     left: 20px;
     z-index: 10; /* Ensures it's above other content */
 }

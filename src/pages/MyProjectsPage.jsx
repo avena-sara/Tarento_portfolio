@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; 
+import axios from 'axios';
+import "../styles/MyProjectsPage.css"; 
 
 const MyProjectsPage = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    // Fetch projects from the backend API
+    axios
+      .get("http://localhost:8080/api/projects") 
+      .then(response => setProjects(response.data))
+      .catch(error => console.error('Error fetching projects:', error));
+  }, []);
+
   return (
-    <div className="my-projects-container">
-      <h2>My Projects</h2>
+    <div>
+      <header className="projects-header">
+        <h1>MY PROJECTS</h1>
+      </header>
 
-      <h3>Project 1: [Project Name]</h3>
-      <p>Description of the first project goes here. This can include the problem it solves, technologies used, and features implemented.</p>
+      <Link to="/">
+        <button className="back-button">Back</button>
+      </Link>
 
-      <h3>Project 2: [Project Name]</h3>
-      <p>Description of the second project goes here. Mention your role, challenges faced, and the outcome.</p>
-
-      <h3>Project 3: [Project Name]</h3>
-      <p>Description of the third project goes here. Include any links to the project or GitHub repositories if available.</p>
-
-      <h3>Project 4: [Project Name]</h3>
-      <p>Briefly explain the fourth project, including technologies, tools, and functionalities.</p>
+      <div className="projects-list">
+        {projects.map(project => (
+          <div key={project.id} className="project-item">
+            <h2>{project.projectName}</h2>
+            <Link to={`/projects/${project.id}`}>
+              <button>Learn More</button>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

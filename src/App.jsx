@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';  // This now imports HomePage.jsx
-import AboutMePage from './pages/AboutMePage';  // You should also rename this one to AboutMePage.jsx
-import EducationalDetailsPage from './pages/EducationalDetailsPage';  // Same here
-import MyProjectsPage from './pages/MyProjectsPage';  // And here
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';  // HomePage.jsx
+import AboutMePage from './pages/AboutMePage';  // AboutMePage.jsx
+import EducationalDetailsPage from './pages/EducationalDetailsPage';  // EducationalDetailsPage.jsx
+import MyProjectsPage from './pages/MyProjectsPage';  // MyProjectsPage.jsx
+import ProjectDetailsPage from './pages/ProjectDetailsPage';  // ProjectDetailsPage.jsx
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about-me" element={<AboutMePage />} />
         <Route path="/educational-details" element={<EducationalDetailsPage />} />
-        <Route path="/my-projects" element={<MyProjectsPage />} />
+        <Route path="/projects" element={<MyProjectsPage />} /> {/* This is your projects page */}
+        <Route path="/projects/:id" element={<ProjectDetailsPage />} /> {/* For individual project details */}
       </Routes>
     </Router>
   );

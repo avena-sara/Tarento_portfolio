@@ -1,18 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/EducationalDetailsPage.css"; // Import the CSS file
 
 const EducationalDetailsPage = () => {
+  const [educationDetails, setEducationDetails] = useState([]);
+
+  // Fetch education details from the backend
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/education")
+      .then((response) => {
+        console.log("Data fetched:", response.data);
+        setEducationDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching education details:", error);
+      });
+  }, []);
+
   return (
-    <div className="educational-details-container">
-      <h2>Educational Details</h2>
-      
-      <h3>10th Grade</h3>
-      <p>Completed in 2015 with a score of 85% from [Your School Name].</p>
-
-      <h3>12th Grade</h3>
-      <p>Completed in 2017 with a score of 90% from [Your School Name].</p>
-
-      <h3>BTech in [Your Major]</h3>
-      <p>Completed in 2021 with a CGPA of 8.5 from [Your College Name].</p>
+    <div className="education-container">
+      <div className="education-header"> {/* Updated class name */}
+        <h1>Educational Details</h1>
+      </div>
+      <div className="education-content">
+        {educationDetails.length > 0 ? (
+          educationDetails.map((education, index) => (
+            <div key={index} className="education-section">
+              <h2>{education.degree}</h2>
+              <p><strong>{education.institution}</strong>, {education.year}</p>
+              <p>{education.boardOrUniversity}</p>
+              <p>{education.cgpaOrPercentage}</p>
+            </div>
+          ))
+        ) : (
+          <p>Loading educational details...</p>
+        )}
+      </div>
+      <button className="back-button" onClick={() => window.history.back()}>
+        Back
+      </button>
     </div>
   );
 };
