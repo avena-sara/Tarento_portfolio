@@ -6,12 +6,11 @@ import "../styles/HomePage.css";
 const HomePage = () => {
   const [personalInfoList, setPersonalInfoList] = useState([]);
 
-  // Fetch data from the backend
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/personal-info") // Ensure backend is running
+      .get("http://localhost:8080/api/personal-info")
       .then((response) => {
-        setPersonalInfoList(response.data); // Store the list of records
+        setPersonalInfoList(response.data);
       })
       .catch((error) => {
         console.error("Error fetching personal info:", error);
@@ -19,59 +18,57 @@ const HomePage = () => {
   }, []);
 
   return (
-       <Container fluid>
-      {/* Header section */}
-      <Row className="header">
-        {/* Empty column for left space */}
-        <Col md={4}></Col> 
-
-        {/* Column for name centered */}
-        <Col md={4} className="text-center">
+    <Container fluid>
+      {/* Profile Section */}
+      <Row className="profile-section">
+        <Col md={6} className="description-text">
           <h1>{personalInfoList[0]?.name}</h1>
-        </Col>
+          <p>
+            I am a passionate software developer with experience in full-stack development. I love learning new technologies.
+          </p>
 
-        {/* Column for email and phone aligned to the right */}
-        <Col md={4} className="text-right">
-          <p>{personalInfoList[0]?.email}</p>
-          <p>{personalInfoList[0]?.phoneNumber}</p>
-        </Col>
-      </Row>
-
-
-      {/* Image and description */}
-      <Row>
-        <Col>
-          <div className="image-section">
-            <img
-              src={`http://localhost:8080/${personalInfoList[0]?.photoUrl}`}
-              alt="Profile"
-              className="profile-photo"
-            />
-            <div className="description-overlay">
-              <p>
-                I am a passionate software developer with experience in full-stack development. I love learning new technologies.
-              </p>
-            </div>
+          {/* Contact Info (Bottom-Left) */}
+          <div className="contact-info">
+            <p>
+              <a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personalInfoList[0]?.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="email-link"
+              >
+                {personalInfoList[0]?.email}
+              </a>
+            </p>
+            <p>{personalInfoList[0]?.phoneNumber}</p>
           </div>
-        </Col>
-      </Row>
 
-      {/* Buttons section */}
-      <Row className="mt-4 justify-content-center">
-        <Col xs="auto">
-          <Button variant="success" href="/about-me" className="button-pop">
-            About Me
-          </Button>
+          {/* Buttons Section */}
+          <Row className="mt-4">
+            <Col xs="auto">
+              <Button variant="success" href="/about-me" className="button-pop">
+                About Me
+              </Button>
+            </Col>
+            <Col xs="auto">
+              <Button variant="success" href="/educational-details" className="button-pop">
+                Educational Details
+              </Button>
+            </Col>
+            <Col xs="auto">
+              <Button variant="success" href="/projects" className="button-pop">
+                My Projects
+              </Button>
+            </Col>
+          </Row>
         </Col>
-        <Col xs="auto">
-          <Button variant="success" href="/educational-details" className="button-pop">
-            Educational Details
-          </Button>
-        </Col>
-        <Col xs="auto">
-          <Button variant="success" href="/projects" className="button-pop">
-            My Projects
-          </Button>
+
+        {/* Profile Image Section */}
+        <Col md={6} className="profile-photo-container">
+          <img
+            src={`http://localhost:8080/${personalInfoList[0]?.photoUrl}`}
+            alt="Profile"
+            className="profile-photo"
+          />
         </Col>
       </Row>
     </Container>

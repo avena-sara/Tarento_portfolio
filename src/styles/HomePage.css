@@ -1,89 +1,143 @@
-/* Remove default margins and paddings */
+/* General container styles */
 .container-fluid, .container {
     padding: 0;
     margin: 0;
 }
 
-/* Header section (white background, black text) */
-.header {
-    background-color: white;
-    
-    padding: 10px 20px;
-    /* display: flex; */
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
-.header .contact-info {
-    margin-top: auto; /* Push contact info to the bottom */
-    text-align: left;
+/* Profile Section: Left for Description, Right for Profile Image */
+.profile-section {
+  display: flex;
+  height: 100vh; /* Ensures full viewport height */
+  align-items: center; /* Centers content vertically */
+  margin-top: 0; /* No margin to avoid gaps */
+  position: relative; /* Ensures positioning of child elements */
 }
 
-.header h1 {
-    font-family: 'Pacifico', cursive;/* Apply the custom font */
-    font-size: 3rem; /* Adjust the font size */
-    font-weight: 700; /* Optional: set bold weight */
-    color: #333; /* Change the font color (optional) */
-    white-space: nowrap;
+/* Description Text */
+.description-text {
+  font-size: 18px;
+  text-align: left;
+  color: #333;
+  flex: 1; /* Takes remaining space */
+  padding-left: 30px; /* Left padding for alignment */
+  font-family: 'Cursive', sans-serif; /* Cursive font for description */
+  position: relative; /* Ensures elements inside are positioned properly */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Moves text to the middle */
+  height: 80%; /* Controls height of text area */
 }
 
-
-/* Ensure the image fills the entire screen width */
-.image-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Aligns the children (buttons) at the bottom */
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+/* Profile Photo Section */
+.profile-photo-container {
+  width: 45%; /* Image takes up less than half */
+  height: 80%; /* Image height is smaller */
+  margin: 20px; /* Adds spacing */
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+  background-color: #f4f4f4; /* Background color to help with image visibility */
 }
 
-
-/* Make the profile photo fill the width & maintain aspect ratio */
+/* Profile Photo Image */
 .profile-photo {
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    object-fit: cover; /* Ensures the image covers the space */
+  width: 100%; /* Make the image fill the width */
+  height: 100%; /* Make the image fill the height */
+  object-fit: cover; /* Ensures the image doesn’t stretch */
 }
 
-/* Description overlay */
-.description-overlay {
-    position: absolute;
-    top: 20%; /* Adjusted position */
-    left: 28%;
-    transform: translateX(-50%);
-    
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 5px;
-    width: 50%;
+/* Name Styling */
+h1 {
+  font-size: 2.5rem;
+  color: #f80202; /* Dark green */
+  font-family: 'Cursive', sans-serif; /* Cursive font for the name */
+  margin-bottom: 10px; /* Spacing below name */
 }
 
-/* Positioning the button container at the bottom over the image */
+/* Email and Phone Number (Positioned at Bottom-Left) */
+.contact-info {
+  position: absolute;
+  bottom: 10px; /* Moves contact info to the bottom */
+  left: 30px; /* Moves it to the left */
+  color: #333;
+}
+
+.email-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+/* Buttons Section */
 .mt-4 {
-    position: absolute;
-    top: 95%; /* Adjust to fine-tune positioning */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  top: 65%; /* Moves buttons slightly higher */
+  left: 30px; /* Aligns to left */
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  width: 100%;
+  margin-right: 25px;
 }
 
-/* Styling for buttons */
+/* Button Styling */
 .button-pop {
-    background-color: #28a745 !important;
-    border: none !important;
-    color: white !important;
-    padding: 10px 20px !important;
-    font-size: 16px !important;
-    margin: 0 10px !important; /* Adds spacing between buttons */
-    transition: transform 0.3s ease;
+  background-color: #28a745 !important;
+  border: none !important;
+  color: white !important;
+  padding: 8px 15px !important; /* Reduced padding for smaller buttons */
+  font-size: 14px !important; /* Smaller font size */
+  margin-right: 10px !important; /* Adds spacing between buttons */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  
 }
 
 .button-pop:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 767px) {
+  .profile-section {
+    flex-direction: column; /* Stack profile photo and description vertically */
+    height: auto; /* Adjust height for mobile */
+  }
+
+  .profile-photo-container {
+    width: 100%; /* Take full width on smaller screens */
+    height: 300px; /* Adjust height for mobile */
+  }
+
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+  }
+
+  .description-text {
+    font-size: 16px; /* Smaller font size on mobile */
+    max-width: 90%; /* Ensure text fits well */
+    text-align: center; /* Center align text on smaller screens */
+    padding: 20px;
+  }
+
+  .contact-info {
+    position: static; /* Prevents overlap issues */
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .mt-4 {
+    position: static; /* Prevents absolute positioning on small screens */
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .button-pop {
+    font-size: 12px; /* Even smaller font size for mobile */
+    padding: 6px 12px;
+  }
 }

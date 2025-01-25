@@ -1,0 +1,65 @@
+/* Project Details Header */
+.projects-header {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Back Button Style */
+  .back-button {
+    background-color: #070000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(253, 251, 251);
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    z-index: 10; /* Ensures it's above other content */
+  }
+  
+  .back-button:hover {
+    background-color: #333;
+  }
+  
+  /* Project Details */
+  .project-details {
+    position: relative;
+    margin-top: 50px;
+    padding: 30px;
+    padding-top: 40px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    margin: 20px;
+    display: flex; /* Use flexbox to position content side by side */
+    max-width: 90%; /* Max width adjusted */
+  }
+  
+  /* Project Info (Left side) */
+  .project-info {
+    flex: 1; /* Takes up the remaining space for the description */
+    padding-right: 20px; /* Adds space between text and image */
+  }
+  
+  /* Project Image (Right side) */
+  .project-image {
+    width: 500px; /* Image takes 50% width of the container */
+    height: auto;
+    border-radius: 8px;
+    max-height: 400px; /* Optionally limit the height of the image */
+    object-fit: cover;
+    max-width: 500px; /* Limit the image width */
+    overflow: hidden;
+  }
+  
+  .project-details p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  

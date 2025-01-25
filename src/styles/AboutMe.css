@@ -1,130 +1,88 @@
-/* Reset some default margins and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Ensure full height and width for the html and body */
-html, body {
-    width: 100%;   /* Ensure full width */
-    overflow-x: hidden; /* Prevent horizontal overflow */
-}
-
-.about-header {
+/* Header styling */
+.header {
     background-color: black;
     color: white;
+    padding: 20px;
     text-align: center;
-    padding: 20px 0;
-    width: 100%;  /* Full width */
-    position: relative; /* Make sure it's not cut off */
-    z-index: 1; /* Ensure it's above other content */
-}
-
-.about-header h1 {
+  }
+  
+  .header h1 {
     margin: 0;
-    font-size: 36px;
-    text-transform: uppercase;
-}
-
-/* Content Section */
-.about-content {
-    display: flex;
-    justify-content: space-between; /* Ensure space between text and image */
-    align-items: center;
+    font-size: 2.5rem; /* Adjust the size as needed */
+  }
+  
+  /* Card Styling */
+  .custom-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
     width: 100%;
-    min-height: 100vh; /* Ensure the content takes at least full viewport height */
-    padding: 0 20px;
-}
-
-.about-text {
-    flex: 1; /* Take up remaining space */
-    padding-right: 20px;
-}
-
-.about-text h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.about-text ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    color: #555;
-}
-
-.about-text ul li {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-/* Image Section */
-.about-image {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Ensure the card takes the full available width within the column */
+    margin: 0 auto; /* Ensures the card is centered in the column */
+    transition: transform 0.3s ease; /* Add smooth hover effect */
+  }
+  
+  .custom-card:hover {
+    transform: translateY(-5px); /* Slight hover effect to lift the card */
+  }
+  
+  .custom-card ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .custom-card li {
+    font-size: 1.1rem;
+    padding: 5px 0;
+  }
+  
+  /* Bootstrap Responsive Grid */
+  @media (max-width: 767px) {
+    .custom-card {
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Adjust container for spacing */
+  .container {
+    padding-top: 40px;
+  }
+  
+  /* Adjusting Card titles */
+  .custom-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Flex utility to center content */
+  .row.justify-content-center {
+    justify-content: center;
+    width: 100%; /* Ensure the Row content spans full width */
+    display: flex; /* Ensure the row uses flexbox */
+  }
+  
+  /* Columns inside the row */
+  .col {
     display: flex;
-    justify-content: flex-end;  /* Align image to the right */
-    align-items: center;        /* Vertically center the image */
-    width: 20%;                 /* Adjust the width to take up half the page */
-    height: auto;              /* Full viewport height */
-    overflow: hidden;
-    object-position: top;
-    object-fit: cover;
-}
-
-.profile-img {
+    justify-content: center; /* Ensures column content is centered */
+    align-items: center; /* Vertically centers items */
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    max-width: 100%;
-}
-
-/* Back Button */
-.back-button {
-    background-color: #070000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: rgb(253, 251, 251);
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    position: absolute;
-    top: 18px;
-    left: 20px;
-    z-index: 10; /* Ensures it's above other content */
-}
-
-.back-button:hover {
-    background-color: #ddd;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .about-content {
-        flex-direction: column;
-        text-align: center;
+    padding: 10px;
+  }
+  
+  /* For larger screens, ensure card size is controlled */
+  @media (min-width: 992px) {
+    .custom-card {
+      max-width: 350px; /* Ensure cards are not too wide on larger screens */
     }
-
-    .about-image {
-        width: 100%;
-        margin-top: 20px;
+  }
+  
+  /* Additional adjustments for mobile screens */
+  @media (max-width: 767px) {
+    .col {
+      margin-bottom: 15px;
     }
-
-    .profile-img {
-        max-width: 200px;
-    }
-
-    .about-text ul li {
-        font-size: 16px;
-    }
-
-    .back-button {
-        margin-top: 20px;
-    }
-}
+  }
+  

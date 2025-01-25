@@ -1,65 +1,85 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import "../styles/AboutMe.css";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import "../styles/AboutMe.css"; // Ensure your custom styles are here
 
-const AboutMe = () => {
-  const [aboutMeData, setAboutMeData] = useState(null);
+const AboutMePage = () => {
+  const [aboutMeData, setAboutMeData] = useState({});
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/about-me/1") // Assuming ID is 1, update as needed
+      .get("http://localhost:8080/api/about-me") // Update the API endpoint if needed
       .then((response) => {
-        setAboutMeData(response.data);
+        setAboutMeData(response.data[0]); // Assuming you are fetching the first item in the list
       })
       .catch((error) => {
-        console.error("Error fetching About Me details:", error);
+        console.error("Error fetching about me data:", error);
       });
   }, []);
 
+  // Helper function to format the comma-separated data into list items
   const formatList = (data) => {
     return data ? data.split(",").map((item, index) => <li key={index}>{item.trim()}</li>) : [];
   };
 
   return (
-    <Container fluid>
-      <Row>
-        <Col>
-          <Button href="/" className="back-button">Back</Button>
-        </Col>
-      </Row>
-      {/* Header */}
-      <Row className="about-header">
-        <Col>
-          <h1>ABOUT ME</h1>
-        </Col>
-      </Row>
+    <div className="Aboutme">
+      {/* Black Header with "About Me" centered */}
+      <header className="header">
+        <h1>About Me</h1>
+      </header>
 
-      {/* Content Section */}
-      <Row className="about-content">
-        <Col md={6} className="about-text">
-          <h2>Tech Skills</h2>
-          <ul>{formatList(aboutMeData?.techSkills)}</ul>
-          
-          <h2>Soft Skills</h2>
-          <ul>{formatList(aboutMeData?.nonTechSkills)}</ul>
-          
-          <h2>Achievements</h2>
-          <ul>{formatList(aboutMeData?.achievements)}</ul>
-          
-          <h2>Interests</h2>
-          <ul>{formatList(aboutMeData?.interests)}</ul>
-        </Col>
+      {/* Main Container */}
+      <Container fluid className="mt-1 ">
+        <Row className="mb-1 justify-content-center">
+          {/* Tech Skills Card */}
+          <Col xs={12} md={6} lg={3} className="d-flex justify-content-center mb-1">
+            <Card className="custom-card">
+              <Card.Body>
+                <Card.Title>Tech Skills</Card.Title>
+                <ul>{formatList(aboutMeData.techSkills)}</ul>
+              </Card.Body>
+            </Card>
+          </Col>
 
-        {/* Image Section */}
-        <Col md={6} className="about-image">
-          <img src="/images/profile.jpg" alt="Profile" className="profile-img" />
-        </Col>
-      </Row>
+          {/* Non-Tech Skills Card */}
+          <Col xs={12} md={6} lg={3} className="d-flex justify-content-center mb-1">
+            <Card className="custom-card">
+              <Card.Body>
+                <Card.Title>Non-Tech Skills</Card.Title>
+                <ul>{formatList(aboutMeData.nonTechSkills)}</ul>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
 
-      
-    </Container>
+        <Row className="mb-1 justify-content-center">
+          {/* Achievements Card */}
+          <Col xs={12} md={6} lg={3} className="d-flex justify-content-center mb-1">
+            <Card className="custom-card">
+              <Card.Body>
+                <Card.Title>Achievements</Card.Title>
+                <ul>{formatList(aboutMeData.achievements)}</ul>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          {/* Interests Card */}
+          <Col xs={12} md={6} lg={3} className="d-flex justify-content-center mb-1">
+            <Card className="custom-card">
+              <Card.Body>
+                <Card.Title>Interests</Card.Title>
+                <ul>{formatList(aboutMeData.interests)}</ul>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      <button className="back-button" onClick={() => window.history.back()}>
+        Back
+      </button>
+    </div>
   );
 };
 
-export default AboutMe;
+export default AboutMePage;
