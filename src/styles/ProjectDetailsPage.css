@@ -1,14 +1,17 @@
 /* Project Details Header */
 .projects-header {
-    background-color: black;
+    background-color: #205323;
     color: white;
     padding: 20px;
     text-align: center;
   }
   
+  .projects-header h1 {
+    font-size: 25px;
+  }
   /* Back Button Style */
   .back-button {
-    background-color: #070000;
+    background-color: #205323;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -62,4 +65,46 @@
     line-height: 1.5;
     color: #333;
   }
+  @media (max-width: 768px) {
+    .projects-header {
+      padding: 15px; /* Reduce padding for smaller screens */
+    }
+  
+    .projects-header h1 {
+      font-size: 20px; /* Slightly smaller heading on mobile */
+    }
+  
+    .back-button {
+      padding: 8px 15px; /* Smaller button for mobile */
+      font-size: 14px;
+      top: 10px;
+      left: 10px;
+    }
+  
+    .project-details {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center;
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  
+    .project-info {
+      padding-right: 0; /* Remove right padding to fit smaller screens */
+      text-align: center; /* Center-align text */
+    }
+  
+    .project-image {
+      width: 100%; /* Make container take full width */
+      max-width: 90%; /* Prevent it from being too large */
+      display: flex;
+      justify-content: center; /* Center image */
+    }
+  
+    .project-image img {
+      width: 100%; /* Ensure the image scales down */
+      height: auto; /* Keep the aspect ratio */
+      max-width: 400px; /* Prevent it from being too large */
+      object-fit: contain; /* Prevent cropping */
+    }
+  }
+  
   

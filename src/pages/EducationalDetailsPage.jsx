@@ -20,9 +20,9 @@ const EducationalDetailsPage = () => {
 
   return (
     <div className="education-container">
-      <div className="education-header"> {/* Updated class name */}
+      <header className="education-header"> {/* Updated class name */}
         <h1>Educational Details</h1>
-      </div>
+      </header>
       <div className="education-content">
         {educationDetails.length > 0 ? (
           educationDetails.map((education, index) => (
@@ -37,9 +37,6 @@ const EducationalDetailsPage = () => {
           <p>Loading educational details...</p>
         )}
       </div>
-      <button className="back-button" onClick={() => window.history.back()}>
-        Back
-      </button>
     </div>
   );
 };

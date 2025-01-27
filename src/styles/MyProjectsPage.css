@@ -1,8 +1,18 @@
+.project-container {
+    background-color: rgb(189,233,201);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
 .projects-header {
-    background-color: black;
+    background-color: #205E23;
     color: white;
     padding: 20px;
     text-align: center;
+  }
+  .projects-header h1 {
+    margin: 0;
+    font-size: 22px; /* Adjust the size as needed */
   }
   
   .projects-list {
@@ -33,20 +43,5 @@
   
   button:hover {
     background-color: darkred;
-  }
-  .back-button {
-    background-color: #070000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: rgb(253, 251, 251);
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    position: absolute;
-    top: 16px;
-    left: 20px;
-    z-index: 10; /* Ensures it's above other content */
   }
   

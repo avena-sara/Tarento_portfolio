@@ -8,9 +8,10 @@
 .profile-section {
   display: flex;
   height: 100vh; /* Ensures full viewport height */
-  align-items: center; /* Centers content vertically */
-  margin-top: 0; /* No margin to avoid gaps */
-  position: relative; /* Ensures positioning of child elements */
+  align-items: center;
+  position: relative;
+  background-color: rgb(189, 233, 201);
+  flex-wrap: wrap;
 }
 
 /* Description Text */
@@ -18,126 +19,178 @@
   font-size: 18px;
   text-align: left;
   color: #333;
-  flex: 1; /* Takes remaining space */
-  padding-left: 30px; /* Left padding for alignment */
-  font-family: 'Cursive', sans-serif; /* Cursive font for description */
-  position: relative; /* Ensures elements inside are positioned properly */
+  flex: 1;
+  padding-left: 30px;
+  font-family: 'Cursive', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Moves text to the middle */
-  height: 80%; /* Controls height of text area */
+  justify-content: center;
+  height: 80%;
+  position: relative;
+}
+
+/* Animated Name */
+.description-text h1 {
+  font-size: 2.5rem;
+  color: #205E23;
+  font-weight: bold;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Profile Photo Section */
 .profile-photo-container {
-  width: 45%; /* Image takes up less than half */
-  height: 80%; /* Image height is smaller */
-  margin: 20px; /* Adds spacing */
+  width: 45%;
+  height: 80%;
+  margin: 20px;
   display: flex;
-  justify-content: center; /* Centers the image horizontally */
-  align-items: center; /* Centers the image vertically */
-  background-color: #f4f4f4; /* Background color to help with image visibility */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Profile Photo Image */
 .profile-photo {
-  width: 100%; /* Make the image fill the width */
-  height: 100%; /* Make the image fill the height */
-  object-fit: cover; /* Ensures the image doesn’t stretch */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Name Styling */
-h1 {
-  font-size: 2.5rem;
-  color: #f80202; /* Dark green */
-  font-family: 'Cursive', sans-serif; /* Cursive font for the name */
-  margin-bottom: 10px; /* Spacing below name */
-}
-
-/* Email and Phone Number (Positioned at Bottom-Left) */
+/* Contact & Icons */
 .contact-info {
   position: absolute;
-  bottom: 10px; /* Moves contact info to the bottom */
-  left: 30px; /* Moves it to the left */
-  color: #333;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.email-link {
-  color: #007bff;
-  text-decoration: none;
+.icon-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
-.email-link:hover {
-  text-decoration: underline;
+.icon-links a {
+  font-size: 24px;
+  color: #205E23;
+  transition: transform 0.3s ease;
+}
+
+.icon-links a:hover {
+  transform: scale(1.2);
+}
+
+.phone-info {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #205E23;
+}
+
+.phone-info i {
+  margin-right: 8px;
 }
 
 /* Buttons Section */
 .mt-4 {
   position: absolute;
-  top: 65%; /* Moves buttons slightly higher */
-  left: 30px; /* Aligns to left */
+  top: 65%;
+  left: 30px;
   display: flex;
-  justify-content: flex-start; /* Align buttons to the left */
+  justify-content: flex-start;
   width: 100%;
-  margin-right: 25px;
 }
 
-/* Button Styling */
 .button-pop {
   background-color: #28a745 !important;
   border: none !important;
   color: white !important;
-  padding: 8px 15px !important; /* Reduced padding for smaller buttons */
-  font-size: 14px !important; /* Smaller font size */
-  margin-right: 10px !important; /* Adds spacing between buttons */
+  padding: 8px 15px !important;
+  font-size: 14px !important;
+  margin-right: 10px !important;
   transition: transform 0.3s ease;
-  cursor: pointer;
-  
 }
 
 .button-pop:hover {
   transform: translateY(-5px);
 }
+.contact-icons a {
+    margin: 0 15px;
+    color:#205E23;
+    top: 20%;
+    left :10%;
+}
 
-/* Responsive Styles for Smaller Screens */
+/* Responsive Design */
 @media (max-width: 767px) {
-  .profile-section {
-    flex-direction: column; /* Stack profile photo and description vertically */
-    height: auto; /* Adjust height for mobile */
-  }
-
-  .profile-photo-container {
-    width: 100%; /* Take full width on smaller screens */
-    height: 300px; /* Adjust height for mobile */
-  }
-
-  .profile-photo {
-    width: 100%;
-    height: 100%;
-  }
-
-  .description-text {
-    font-size: 16px; /* Smaller font size on mobile */
-    max-width: 90%; /* Ensure text fits well */
-    text-align: center; /* Center align text on smaller screens */
-    padding: 20px;
-  }
-
-  .contact-info {
-    position: static; /* Prevents overlap issues */
-    text-align: center;
-    margin-top: 15px;
-  }
-
-  .mt-4 {
-    position: static; /* Prevents absolute positioning on small screens */
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .button-pop {
-    font-size: 12px; /* Even smaller font size for mobile */
-    padding: 6px 12px;
-  }
+    .profile-section {
+      flex-direction: column;
+      height: auto; /* Adjust to content height */
+      justify-content: center;
+      overflow: hidden; /* Prevent overflow */
+    }
+  
+    .profile-photo-container {
+      width: 80%; /* Adjust width for better fit */
+      height: auto; /* Maintain aspect ratio */
+      margin-top: 20px;
+      display: flex;
+      justify-content: center; /* Center image properly */
+      align-items: center;
+    }
+  
+    .description-text {
+      font-size: 16px;
+      text-align: center;
+      max-width: 90%;
+      padding: 20px;
+      align-items: center; /* Center text */
+      display: flex;
+      justify-content: center;
+      flex-direction: column; /* Keep it vertically centered */
+    }
+  
+    .description-text h1 {
+      font-size: 2rem; /* Adjust font size for mobile */
+      text-align: center;
+    }
+  
+    .contact-icons {
+      margin-top: 20px; /* Provide space between icons and text */
+      display: flex;
+      justify-content: center; /* Center icons properly */
+      gap: 15px;
+    }
+  
+    .phone-info {
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  
+    .mt-4 {
+      position: static;
+      justify-content: center;
+      flex-wrap: wrap; /* Prevents button overlap */
+      gap: 10px; /* Adds spacing between buttons */
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column; /* Stack buttons vertically */
+    }
+  
+    .button-pop {
+      font-size: 12px;
+      padding: 10px 15px;
+      width: 80%; /* Make buttons take up more width */
+      text-align: center;
+      margin-bottom: 10px; /* Add margin between buttons */
+    }
+  
+    .icon-link {
+      font-size: 30px; /* Make icons slightly bigger for better touch target */
+    }
 }

@@ -27,9 +27,7 @@ const ProjectDetailsPage = () => {
     <div>
       <header className="projects-header">
         <h1>{project.projectName}</h1>
-        <Link to="/projects">
-          <button className="back-button">Back</button>
-        </Link>
+
       </header>
       <div className="project-details">
         <div className="project-info">

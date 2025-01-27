@@ -23,9 +23,9 @@ const AboutMePage = () => {
   };
 
   return (
-    <div className="Aboutme">
+    <div className="Aboutme-container">
       {/* Black Header with "About Me" centered */}
-      <header className="header">
+      <header className="about-header">
         <h1>About Me</h1>
       </header>
 
@@ -75,9 +75,6 @@ const AboutMePage = () => {
           </Col>
         </Row>
       </Container>
-      <button className="back-button" onClick={() => window.history.back()}>
-        Back
-      </button>
     </div>
   );
 };

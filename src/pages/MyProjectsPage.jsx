@@ -15,14 +15,11 @@ const MyProjectsPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="project-container">
       <header className="projects-header">
-        <h1>MY PROJECTS</h1>
+        <h1>My Projects</h1>
       </header>
 
-      <Link to="/">
-        <button className="back-button">Back</button>
-      </Link>
 
       <div className="projects-list">
         {projects.map(project => (
