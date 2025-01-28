@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/ProjectDetailsPage.css";
 
 const ProjectDetailsPage = () => {
   const [project, setProject] = useState(null);
-  const { id } = useParams(); // Get the project ID from the URL
+  const { id } = useParams(); // Get the project UUID from the URL
 
   useEffect(() => {
     // Fetch the project details from the backend API
@@ -14,27 +14,29 @@ const ProjectDetailsPage = () => {
       .then(response => {
         console.log("Project fetched: ", response.data);  // Debugging log to check fetched data
         setProject(response.data);
+        console.log(project);
       })
       .catch(error => console.error('Error fetching project details:', error));
   }, [id]);
 
   if (!project) return <div>Loading...</div>;
 
-  // Manually set the image based on project ID or project name (here assuming `project1` and `project2`)
-  const imageUrl = id === "3" ? "/images/project1.jpg" : id === "4" ? "/images/project2.jpg" : "/images/default.jpg";
+  // Destructure description and proimages from the project
+  const { description, proimages } = project;
 
   return (
     <div>
       <header className="projects-header">
         <h1>{project.projectName}</h1>
-
       </header>
       <div className="project-details">
         <div className="project-info">
-          <p>{project.description}</p>
+          <p>{description}</p>
         </div>
         <div className="project-image">
-          <img src={imageUrl} alt={project.projectName} />
+          {/* Display the image using proimages URL */}
+          <img src={`http://localhost:8080/${proimages}`} alt={project.projectName} />
+
         </div>
       </div>
     </div>
@@ -42,4 +44,3 @@ const ProjectDetailsPage = () => {
 };
 
 export default ProjectDetailsPage;
-

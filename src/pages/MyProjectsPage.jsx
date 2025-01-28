@@ -25,7 +25,7 @@ const MyProjectsPage = () => {
         {projects.map(project => (
           <div key={project.id} className="project-item">
             <h2>{project.projectName}</h2>
-            <Link to={`/projects/${project.id}`}>
+            <Link to={`/projects/${project.uuid}`}>
               <button>Learn More</button>
             </Link>
           </div>

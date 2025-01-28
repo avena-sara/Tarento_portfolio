@@ -36,11 +36,7 @@ const HomePage = () => {
               className="icon-link"
             >
               <FaEnvelope size={24} />
-            </a><button className="back-button" onClick={() => window.history.back()}>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15 19L8 12L15 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-      </button>
+            </a>
             <a
               href="https://github.com/avena-sara" /* Replace with your GitHub link */
               target="_blank"
@@ -67,7 +63,7 @@ const HomePage = () => {
           {/* Buttons Section */}
           <Row className="mt-4">
             <Col xs="auto">
-              <Button variant="success" href="/about-me" className="button-pop">
+              <Button variant="success" href="/skills" className="button-pop">
                 About Me
               </Button>
             </Col>
