@@ -5,42 +5,32 @@
     padding: 20px;
     text-align: center;
   }
+
+  .projectdet-container{
+    background-color: rgb(5, 12, 32);
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+  }
   
   .projects-header h1 {
     font-size: 25px;
   }
-  /* Back Button Style */
-  .back-button {
-    background-color: #205323;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: rgb(253, 251, 251);
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    position: absolute;
-    top: 16px;
-    left: 20px;
-    z-index: 10; /* Ensures it's above other content */
-  }
   
-  .back-button:hover {
-    background-color: #333;
-  }
+
   
   /* Project Details */
   .project-details {
     position: relative;
     margin-top: 50px;
-    padding: 30px;
+    padding: 40px;
     padding-top: 40px;
     background-color: #f4f4f4;
     border-radius: 8px;
-    margin: 20px;
+    margin: 60px;
     display: flex; /* Use flexbox to position content side by side */
     max-width: 90%; /* Max width adjusted */
+    max-height: 100%;
   }
   
   /* Project Info (Left side) */
@@ -67,44 +57,57 @@
   }
   @media (max-width: 768px) {
     .projects-header {
-      padding: 15px; /* Reduce padding for smaller screens */
+        padding: 15px; /* Reduce padding for smaller screens */
     }
-  
+
+    .projectdet-container {
+        background-color: rgb(5, 12, 32);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto; /* Allow height to adjust */
+        padding: 0;
+        margin: 0;
+    }
+
     .projects-header h1 {
-      font-size: 20px; /* Slightly smaller heading on mobile */
+        font-size: 20px; /* Slightly smaller heading on mobile */
     }
-  
+
     .back-button {
-      padding: 8px 15px; /* Smaller button for mobile */
-      font-size: 14px;
-      top: 10px;
-      left: 10px;
+        padding: 8px 15px; /* Smaller button for mobile */
+        font-size: 14px;
+        top: 10px;
+        left: 10px;
     }
-  
+
     .project-details {
-      flex-direction: column; /* Stack items vertically */
-      align-items: center;
-      padding: 20px; /* Adjust padding for smaller screens */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        padding: 15px; /* Adjust padding for smaller screens */
+        width: 100%;
     }
-  
+
     .project-info {
-      padding-right: 0; /* Remove right padding to fit smaller screens */
-      text-align: center; /* Center-align text */
+        padding-right: 0; /* Remove right padding to fit smaller screens */
+        text-align: center; /* Center-align text */
+        max-width: 90%;
     }
-  
+
     .project-image {
-      width: 100%; /* Make container take full width */
-      max-width: 90%; /* Prevent it from being too large */
-      display: flex;
-      justify-content: center; /* Center image */
+        width: 100%;
+        max-width: 90%; /* Prevent it from being too large */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Ensure content doesn't overflow */
     }
-  
+
     .project-image img {
-      width: 100%; /* Ensure the image scales down */
-      height: auto; /* Keep the aspect ratio */
-      max-width: 400px; /* Prevent it from being too large */
-      object-fit: contain; /* Prevent cropping */
+        width: 100%;
+        max-width: 350px; /* Set a reasonable max width */
+        height: auto;
+        max-height: 250px; /* Prevent image from overflowing */
+        object-fit: contain; /* Ensure full image is visible */
     }
-  }
-  
-  
+}

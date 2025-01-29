@@ -21,9 +21,9 @@ const SkillsPage = () => {
   return (
     <div className="skills-container">
       <h1 className="my-text">Skills</h1>
-      <div className="row">
+      <div className="row row1">
         {skills.map((skill) => (
-          <div className="col-md-4 mb-4" key={skill.uuid}>
+          <div className="col-md-4 ml-5 mb-4" key={skill.uuid}>
             <div className="card h-100 shadow-sm text-center">
               <div className="card-body d-flex flex-column justify-content-center">
                 <h5 className="card-title font-weight-bold">{skill.skills}</h5>

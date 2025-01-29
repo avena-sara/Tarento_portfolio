@@ -15,7 +15,7 @@
 
 /* Unique header styling for Educational Details Page */
 .education-header {
-  background-color: #205E23;
+  background-color: rgb(5, 12, 32);
   color: white;
   padding: 20px;
   text-align: center;
@@ -24,7 +24,7 @@
 
 .education-header h1 {
   margin: 0;
-  font-size: 22px; /* Adjust the size as needed */
+  font-size: 25px; /* Adjust the size as needed */
 }
 
 /* Education content section */

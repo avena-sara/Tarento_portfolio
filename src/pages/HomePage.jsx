@@ -61,23 +61,7 @@ const HomePage = () => {
           </div>
 
           {/* Buttons Section */}
-          <Row className="mt-4">
-            <Col xs="auto">
-              <Button variant="success" href="/skills" className="button-pop">
-                About Me
-              </Button>
-            </Col>
-            <Col xs="auto">
-              <Button variant="success" href="/educational-details" className="button-pop">
-                Educational Details
-              </Button>
-            </Col>
-            <Col xs="auto">
-              <Button variant="success" href="/projects" className="button-pop">
-                My Projects
-              </Button>
-            </Col>
-          </Row>
+        
         </Col>
 
         {/* Profile Image Section */}

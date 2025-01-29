@@ -2,12 +2,15 @@
 .container-fluid, .container {
     padding: 0;
     margin: 0;
+    width:100%;
+    
 }
 
 /* Profile Section: Left for Description, Right for Profile Image */
 .profile-section {
   display: flex;
   height: 100vh; /* Ensures full viewport height */
+  width:100%;
   align-items: center;
   position: relative;
   background-color: rgb(5, 12, 32);
@@ -84,7 +87,9 @@
 .icon-links a:hover {
   transform: scale(1.2);
 }
-
+.row{
+  margin-left: 0%;
+}
 .phone-info {
   display: flex;
   align-items: center;
@@ -99,11 +104,11 @@
 /* Buttons Section */
 .mt-4 {
   position: absolute;
-  top: 65%;
-  left: 30px;
+  top: 70%;
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  margin-left: 0%;
 }
 
 .button-pop {
@@ -130,7 +135,7 @@
 @media (max-width: 767px) {
     .profile-section {
       flex-direction: column;
-      height: auto; /* Adjust to content height */
+      height: 100vh; /* Adjust to content height */
       justify-content: center;
       overflow: hidden; /* Prevent overflow */
     }

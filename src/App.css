@@ -1,0 +1,53 @@
+/* Navbar Styles */
+.my-navbar {
+    background-color: rgb(5, 12, 32) !important; /* Custom background */
+    padding: 10px 20px;
+}
+
+/* Navbar Brand */
+.my-navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745 !important; /* Green text */
+    transition: color 0.3s ease;
+}
+
+.my-navbar .navbar-brand:hover {
+    color: #1f7a3d !important; /* Darker green on hover */
+}
+
+/* Navbar Links */
+.my-navbar .nav-link {
+    font-size: 1.1rem;
+    color: white !important;
+    margin-right: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.my-navbar .nav-link:hover {
+    color: #28a745 !important; /* Green on hover */
+    transform: translateY(-2px);
+}
+
+/* Navbar Toggler */
+.my-navbar .navbar-toggler {
+    border: none;
+}
+
+.my-navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .my-navbar .navbar-collapse {
+        background-color: rgb(5, 12, 32); /* Background for collapsed menu */
+        padding: 10px;
+    }
+
+    .my-navbar .nav-link {
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+    }
+}

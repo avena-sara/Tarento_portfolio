@@ -25,7 +25,7 @@ const ProjectDetailsPage = () => {
   const { description, proimages } = project;
 
   return (
-    <div>
+    <div className="projectdet-container">
       <header className="projects-header">
         <h1>{project.projectName}</h1>
       </header>
