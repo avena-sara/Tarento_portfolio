@@ -5,6 +5,7 @@ import SkillsPage from './pages/SkillsPage';
 import EducationalDetailsPage from './pages/EducationalDetailsPage';
 import MyProjectsPage from './pages/MyProjectsPage';
 import ProjectDetailsPage from './pages/ProjectDetailsPage';
+import LoginPage from './pages/LoginPage';
 import MyNavbar from './components/Navbar'; // ✅ Import Navbar
 
 const App = () => {
@@ -17,8 +18,11 @@ const App = () => {
         <Route path="/educational-details" element={<EducationalDetailsPage />} />
         <Route path="/projects" element={<MyProjectsPage />} />
         <Route path="/projects/:id" element={<ProjectDetailsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+
       </Routes>
     </Router>
+      
   );
 };
 
