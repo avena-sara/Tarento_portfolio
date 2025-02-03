@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
- 
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Make a POST request to your backend to authenticate the user
-    const response = await fetch("/api/login", {
+    const response = await fetch("http://localhost:8080/admin/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,8 +20,8 @@ const Login = () => {
     });
 
     if (response.ok) {
-      // Redirect to protected page after successful login
-      history.push("/dashboard"); // Change to your protected page URL
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/panel");
     } else {
       setError("Invalid username or password");
     }
