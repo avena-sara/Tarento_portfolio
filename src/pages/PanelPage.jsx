@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Button, Container, Row, Col, ListGroup,Offcanvas } from "react-bootstrap";
 import axios from "axios";
 import { FaPlus, FaTrash, FaEdit } from "react-icons/fa";
 import EditModal from "../components/EditModal";  // Import the modal for editing
@@ -15,7 +15,8 @@ const PanelPage = () => {
   const [admins, setAdmins] = useState([]);
   const [showModal, setShowModal] = useState(false);  // To control modal visibility
   const [modalData, setModalData] = useState(null);  // To store the data for editing
-  const [modalAction, setModalAction] = useState("add"); // To track whether it's Add or Edit
+  const [modalAction, setModalAction] = useState("add");
+  const [showSidebar, setShowSidebar] = useState(false); // To track whether it's Add or Edit
 
   useEffect(() => {
     fetchData();
@@ -186,8 +187,17 @@ const PanelPage = () => {
   return (
     <Container fluid>
       <Row>
-        {/* Sidebar */}
-        <Col md={3} className="bg-light vh-100 p-3">
+        {/* Sidebar Toggle Button for Small Screens */}
+        <Button
+          variant="primary"
+          className="d-md-none my-2"
+          onClick={() => setShowSidebar(true)}
+        >
+          ☰ Menu
+        </Button>
+
+        {/* Sidebar for Large Screens */}
+        <Col xs={12} md={3} className="bg-light vh-100 p-3 d-none d-md-block">
           <h4>Admin Panel</h4>
           <ListGroup>
             {["Users", "Education", "Skills", "Projects"].map((section) => (
@@ -201,16 +211,44 @@ const PanelPage = () => {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <Button variant="danger" className="logout-btn mt-3" onClick={handleLogout}>Logout</Button>
+          <Button variant="danger" className="logout-btn mt-3" onClick={handleLogout}>
+            Logout
+          </Button>
         </Col>
 
+        {/* Offcanvas Sidebar for Small Screens */}
+        <Offcanvas show={showSidebar} onHide={() => setShowSidebar(false)} placement="start">
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Admin Panel</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <ListGroup>
+              {["Users", "Education", "Skills", "Projects"].map((section) => (
+                <ListGroup.Item
+                  key={section}
+                  action
+                  active={selectedSection === section}
+                  onClick={() => setSelectedSection(section)}
+                >
+                  {section}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+            <Button variant="danger" className="logout-btn mt-3" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Offcanvas.Body>
+        </Offcanvas>
+
         {/* Main Content */}
-        <Col md={9} className="p-4">
+        <Col xs={12} md={9} className="p-4">
           <h2>{selectedSection}</h2>
-          <Button variant="success" className="add-btn mb-3" onClick={handleAdd}>Add {selectedSection}</Button>
-          <Row>
-            {renderSectionContent()}
-          </Row>
+          <div className="d-flex justify-content-start">
+            <Button variant="success" className="add-btn mb-3 w-100 w-md-auto" onClick={handleAdd}>
+              Add {selectedSection}
+            </Button>
+          </div>
+          {renderSectionContent()}
         </Col>
       </Row>
 
@@ -218,10 +256,11 @@ const PanelPage = () => {
       <EditModal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onSave={handleSave}
+        onSave={() => {}}
         data={modalData}
         section={selectedSection}
-        action={modalAction}  // Pass action type (add or edit) to the modal
+        action={modalAction}
+        size="lg"
       />
     </Container>
   );
