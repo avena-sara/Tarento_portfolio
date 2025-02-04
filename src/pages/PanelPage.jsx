@@ -101,6 +101,27 @@ const PanelPage = () => {
     setShowModal(false);  // Close the modal after saving
   };
 
+  // Delete handlers for each section
+  const handleDeleteSkill = async (uuid) => {
+    await axios.delete(`http://localhost:8080/api/skills/${uuid}`);
+    setSkills(skills.filter(skill => skill.uuid !== uuid));
+  };
+
+  const handleDeleteProject = async (uuid) => {
+    await axios.delete(`http://localhost:8080/api/projects/${uuid}`);
+    setProjects(projects.filter(project => project.uuid !== uuid));
+  };
+
+  const handleDeleteEducation = async (uuid) => {
+    await axios.delete(`http://localhost:8080/api/education/${uuid}`);
+    setEducation(education.filter(edu => edu.uuid !== uuid));
+  };
+
+  const handleDeleteUser = async (id) => {
+    await axios.delete(`http://localhost:8080/admin/app_users/${id}`);
+    setAdmins(admins.filter(admin => admin.id !== id));
+  };
+
   // Render each section's content with its corresponding fields
   const renderSectionContent = () => {
     if (selectedSection === "Users") {

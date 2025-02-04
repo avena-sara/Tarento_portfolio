@@ -127,6 +127,40 @@ const EditModal = ({ show, onClose, onSave, data, section, action }) => {
             </Form.Group>
           </>
         );
+      case "Users":
+        return (
+          <>
+            <Form.Group controlId="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                name="username"
+                value={editedData.username || ""}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                value={editedData.password || ""}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            {/* Role can be optional, so it can be left out if not needed for now */}
+            <Form.Group controlId="role">
+              <Form.Label>Role</Form.Label>
+              <Form.Control
+                type="text"
+                name="role"
+                value={editedData.role || ""}
+                onChange={handleChange}
+                placeholder="Leave blank if not needed"
+              />
+            </Form.Group>
+          </>
+        );
       default:
         return null;
     }
